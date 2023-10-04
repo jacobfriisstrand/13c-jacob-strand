@@ -1,0 +1,94 @@
+/* Font families */
+@font-face {
+  font-family: "display";
+  src: url(fonts/fraunces-italic.woff2);
+}
+
+@font-face {
+  font-family: "headings";
+  src: url(fonts/Calibre-medium.woff2);
+}
+
+@font-face {
+  font-family: "body";
+  src: url(fonts/calibre-regular.woff2);
+}
+
+/* Colors */
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --text: hsl(58, 70%, 9%);
+    --primary: hsl(60, 70%, 96%);
+    --secondary: hsl(300, 69%, 95%);
+    --accent: hsl(238, 71%, 46%);
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: hsl(58, 70%, 91%);
+    --background: hsl(60, 70%, 4%);
+    --primary: hsl(238, 71%, 51%);
+    --secondary: hsl(299, 72%, 14%);
+    --accent: hsl(238, 71%, 54%);
+  }
+}
+
+/* Font sizes */
+:root {
+  --fs-small: 0.812rem;
+  --fs-base: 1rem;
+  --fs-h4: 1.25rem;
+  --fs-h3: 1.562rem;
+  --fs-h2: 1.938rem;
+  --fs-h1: 2.438rem;
+}
+
+/* Box shadow */
+
+:root {
+  --box-shadow: 2px 4px 12px rgb(0 0 0 / 8%);
+}
+
+/* Spacing and sizing */
+
+:root {
+  --border-radius-outer: 10px;
+  --border-radius-inner: calc(var(--border-radius-outer) / 2);
+}
+
+/* Font sizing and styling */
+
+h1 {
+  font-size: var(--fs-h1);
+  font-family: "display";
+}
+
+h2 {
+  font-size: var(--fs-h2);
+  font-family: "headings";
+}
+
+h3 {
+  font-size: var(--fs-h3);
+  font-family: "headings";
+}
+
+h4 {
+  font-size: var(--fs-h4);
+  font-family: "headings";
+}
+
+p {
+  font-size: var(--fs-base);
+  font-family: "body";
+}
+
+a {
+  font-family: "body";
+}
+
+p.small {
+  font-size: var(--fs-small);
+  font-family: "body";
+}

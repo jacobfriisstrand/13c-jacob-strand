@@ -1,0 +1,42 @@
+---
+import Layout from '../layouts/Layout.astro';
+import "../../public/styles/style.css"
+import "../../public/styles/reset.css"
+---
+
+		<nav class="links">
+			<ul>
+				<li><a href="/">Styletile</a></li>
+				<li><a href="/part-a">Part A</a></li>
+				<li><a href="/part-b">Part B</a></li>
+				<li><a href="/part-c">Part C</a></li>
+				<li><a href="/part-d">Part D</a></li>
+			</ul>
+		</nav>
+
+
+        <style>
+
+            nav {
+                padding: 1rem 0rem;
+            }
+
+            a {
+                text-decoration: underline;
+                transition: all 150ms ease-in-out;
+            }
+
+            ul {
+                display: flex;
+                justify-content: space-between;
+                font-size: var(--fs-h4);
+            }
+
+            a:hover {
+                text-decoration-color: var(--accent);
+                transition: all 150ms ease-in-out;
+                color: var(--accent);
+            }
+
+            
+        </style>
