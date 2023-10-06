@@ -27,11 +27,12 @@
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --text: hsl(58, 70%, 91%);
+    --text: hsl(60, 100%, 98%);
     --background: hsl(0, 0%, 8%);
     --primary: hsl(0, 0%, 12%);
     --secondary: hsl(0, 0%, 21%);
     --accent: #c6c8f5;
+    --subtle-text: hsl(0, 0%, 52%);
   }
 }
 
@@ -60,6 +61,10 @@
 }
 
 /* Font sizing and styling */
+
+html {
+  color: var(--text);
+}
 
 h1 {
   font-size: var(--fs-h1);
