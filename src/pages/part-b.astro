@@ -2,8 +2,61 @@
 import Layout from '../layouts/Layout.astro';
 import "../../public/styles/style.css"
 import "../../public/styles/reset.css"
-import Navigation from '../components/Navigation.astro';
+import TimeCard from '../components/TimeCard.astro';
+import UserCard from '../components/UserCard.astro';
 ---
 
 <Layout title="13c | Part B">
+    <main>
+        <h1>Part B</h1>
+        <p>Jeg har brugt grid til at definere en grid-container kaldet ".grid-container". Denne container har en række af kolonner, der tilpasser sig skærmens bredde med en minimumsbredde på 400px og en 1fr af den resterende tilgængelige plads. <br>
+        
+        På ".time-card-container" og ".user-card" har jeg brugt background-color, border-radius og box-shadow for at skabe et kortlignende udseende. På ".time-card" og ".user-card__content" har jeg brugt flex til selve indholdet, og min-height er indstillet til 100% for at sikre, at kortene fylder deres grid-celle i højden. <br>
+        
+        I ".time-card__main" skiftes der mellem brug af flex-direction: column og flex-direction: row afhængigt af skærmbredden ved hjælp af media queries. <br>
+        
+        For ".user-card__thumb" ændres flexretningen og placeringen af indholdet ved hjælp af en media query for skærmbredder over 1600px. <br>
+        
+        Til tekstfarven til "Last week" og "Report for" har jeg lavet en ny custom property der er en lille smule lysere, for at give kontrast til det andet tekst i card'et. Dog er teksten ikke så lys, at den ikke overholder accessibility konflikter.
+        
+        </p>
+        <div class="grid-container">
+            <div class="child">
+                <UserCard name="Jane Dawson" image="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"/>
+            </div>
+            <TimeCard category="Work"  hours="24" previous="26"/>
+            <TimeCard category="Exercise"  hours="5" previous="4.5"/>
+            <TimeCard category="Play"  hours="10" previous="8"/>
+            <TimeCard category="Social"  hours="6.5" previous="4"/>
+            <TimeCard category="Study"  hours="12.5" previous="14"/>
+            <TimeCard category="Self Care"  hours="3" previous="2"/>
+        </div>
+    </main>
 </Layout>
+
+<style>
+main {
+    padding-inline: 1rem;
+}
+    p {
+        margin-block: 2rem;
+    }
+    .grid-container{
+    display: grid;
+    gap: 1rem;
+      grid-template-columns:
+    repeat(auto-fit, minmax(400px, 1fr));
+    }
+
+    .grid-container > * {
+        min-height: 100%;
+    }
+
+    @media (width > 1600px){
+    .grid-container > :first-child {
+        grid-row: span 2;
+    }
+
+    }
+
+</style>

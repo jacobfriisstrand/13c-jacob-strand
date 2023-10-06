@@ -5,125 +5,142 @@ import "../../public/styles/reset.css"
 ---
 
 <Layout title="13c | Part A">
-    <h1>Part A</h1>
-    <p></p>
+    <main>
+      <h1>Part A</h1>
+      <p>Jeg begyndte med at definere to hovedklasser, .card-container og .card. <br>
 
+.card-container blev oprettet som en container til .card. <br>
 
-    <div class="card-container">
-        <article class="card">
-            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmFuZG9tJTIwcGVvcGxlfGVufDB8fDB8fHww&w=1000&q=80" alt="">
-            <div>
-                <h3>Jona Gregorio</h3>
-                <p>Amusement Park Attendant</p>
-            </div>
-            <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis alias quos incidunt numquam natus quam quae adipisci, molestiae voluptates sequi facere officia eos recusandae dolores culpa debitis sunt cumque tenetur architecto laboriosam ipsam! Fugiat eligendi, sapiente voluptatem, reiciendis nesciunt perferendis voluptatibus ea distinctio, rerum voluptates repellendus recusandae doloribus non iste.</p>
-            <div class="contact">
-                <h4>Connect</h4>
-                <div class="contact-icons">
-                    <object data="../../public/icons/mail.svg" type=""></object>
-                    <object data="../../public/icons/phone.svg" type=""></object>
-                </div>
-            </div>
-            </div>
-        </article>
-    </div>
+.card er lavet med grid. Jeg brugte align-items til at centrere indholdet vertikalt og tilføjede margener og skygger for at give det en kort-lignende æstetik. <br>
+
+Derefter specificerede jeg styling for elementer inden i kortet. Jeg tilføjede margins til alle elementer undtagen det første og det sidste barn, og jeg tilpassede billedet i det første barn ved at tilføje border-radius til toppen. <br>
+
+Jeg indførte også responsivt design ved at bruge container queries i forskellige bredder. For skærmbredder over 340px ændrede jeg kortets layout ved at tilføje en ekstra kolonne og justere billedets aspect-ratio. For skærmbredder over 515px omstrukturerede jeg layoutet yderligere ved at ændre kolonne- og rækkeplaceringen for elementerne. <br>
+
+Jeg havde udfordringer med at bruge subgrid til at få billedet til at bryde ud af containeren, da jeg har svært ved at forstå konceptet bag subgrid.
+</p>
+      <div class="card-container">
+          <article class="card">
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmFuZG9tJTIwcGVvcGxlfGVufDB8fDB8fHww&w=1000&q=80" alt="">
+              <div>
+                  <h3>Jona Gregorio</h3>
+                  <p>Amusement Park Attendant</p>
+              </div>
+              <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis alias quos incidunt numquam natus quam quae adipisci, molestiae voluptates sequi facere officia eos recusandae dolores culpa debitis sunt cumque tenetur architecto laboriosam ipsam! Fugiat eligendi, sapiente voluptatem, reiciendis nesciunt perferendis voluptatibus ea distinctio, rerum voluptates repellendus recusandae doloribus non iste.</p>
+              <div class="contact">
+                  <h4>Connect</h4>
+                  <div class="contact-icons">
+                      <object data="../../public/icons/mail.svg" type=""></object>
+                      <object data="../../public/icons/phone.svg" type=""></object>
+                  </div>
+              </div>
+              </div>
+          </article>
+      </div>
+    </main>
 </Layout>
 
 <style>
 
-.card-container {
-    container-type: inline-size;
-}
-
-.card {
-    background-color: var(--primary);
-    border-radius: var(--border-radius-outer);
-    display: grid;
-    align-items: center;
-    gap: 1rem;
-    box-shadow: var(--box-shadow);
-}
-
-.card > *:not(:first-child) {
+  main {
     padding-inline: 1rem;
-}
-
-
-.card img {
-    aspect-ratio: 1;
-    object-fit: cover;
-    border-radius: var(--border-radius-outer) var(--border-radius-outer) 0 0;
-
-}
-
+  }
 object {
     width: 2rem;
     aspect-ratio: 1;
 }
 
-.contact {
-    background-color: var(--secondary);
-    text-align: center;
-    border-radius: 0 0 var(--border-radius-outer) var(--border-radius-outer);
+.card-container {
+  container-type: inline-size;
 }
 
-.contact h4 {
-    margin-top: 1rem;
+.card {
+  display: grid;
+  align-items: center;
+  gap: 1rem;
+  background-color: var(--primary);
+  border-radius: var(--border-radius-outer);
+  box-shadow: var(--box-shadow);
+  width: fit-content;
+}
+
+.card > :not(:first-child) {
+    padding-inline: 1rem;
+}
+
+.card > :last-child {
+  padding-block: 1rem;
+}
+
+.card > :first-child {
+  border-radius: var(--border-radius-outer) var(--border-radius-outer) 0 0;
+  object-fit: cover;
+
+}
+
+.contact {
+  text-align: center;
+  background-color: var(--secondary);
 }
 
 .contact-icons {
-    display: flex;
-    gap: 1rem;
-    margin-block: 1rem;
-    justify-content: center;
+  display: flex;
+  gap: 1rem;
+  padding-top: 1rem;
+  justify-content: center;
 }
 
-/* If the container is larger than 700px */
-@container (width > 320px) {
+@container (width > 340px) {
   .card {
-    grid-template-columns: 1fr 2fr;
-    grid-template-rows: repeat(3, auto);
+    grid-template-columns: .5fr auto;
   }
 
-  .card p, .contact {
-    grid-column: span 2;
-  }
-
-  .card img {
-    padding-left: 1rem;
-    padding-top: 1rem;
-    border-radius: var(--border-radius-outer);
-  }
+  .card > :first-child {
+  border-radius: var(--border-radius-outer);
+  margin-top: 1rem;
+  margin-left: 1rem;
+  aspect-ratio: 1;
 }
+
+.contact {
+  grid-row: 3;
+}
+
+.contact, .description {
+    grid-column: span 2;
+}
+}
+
 
 @container (width > 515px) {
-  .card {
-    grid-template-columns: 1fr 2fr;
-    grid-template-rows: repeat(3, auto);
-  }
 
-  .contact {
-    grid-column: span 1;
-  }
+  .card > :first-child {
+  border-radius: var(--border-radius-outer);
+  aspect-ratio: initial;
+  margin: 0;
+  grid-row: 1 / 3;
 
-  .card .description {
-    grid-column: 2 / span 1;
-  }
-
-  .contact {
-    background-color: transparent;
-  }
-
-  .card img {
-    border-radius: var(--border-radius-outer);
-    grid-row: 1 / 3;
-    aspect-ratio: initial;
-  }
 }
 
-@container (width > 865px) {
-    
+.card {
+  padding: 1rem;
+  align-items: start;
+  grid-template-columns: 200px 1fr;
 }
 
 
+.contact {
+  grid-column: 1;
+  background-color: transparent;
+}
+
+.description {
+    grid-column: 2;
+    grid-row: span 2;
+}
+}
+ 
+h1 + p {
+  margin-block: 2rem;
+}
 </style>

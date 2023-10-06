@@ -2,8 +2,135 @@
 import Layout from '../layouts/Layout.astro';
 import "../../public/styles/style.css"
 import "../../public/styles/reset.css"
-import Navigation from '../components/Navigation.astro';
 ---
 
-<Layout title="13c | Part C">
+
+<Layout>
+    <div class="container">
+            <h1>Part C</h1>
+    <p>Jeg startede med at definere hero-sektionen som en grid-container ved at tilføje display: grid; til .hero klassen. Dette giver mig mulighed for at oprette et grid inde i hero-sektionen. <br>
+
+Derefter bruger jeg grid-template-columns og grid-template-rows til at bestemme, hvordan jeg ønsker at opdele elementerne i kolonner og rækker. For eksempel bruger jeg grid-template-columns: 1fr 1fr 1fr; for at opdele hero-sektionen i tre kolonner med ens bredde, når skærmen er større end 768px. <br>
+
+Jeg placerede billedet og .hero-content i .hero griddet ved at bruge grid-column og grid-row. For eksempel bruger jeg grid-column: 1 / span 2; for at anbringe billedet i de første to kolonner, når skærmen er bredere end 768px. <br>
+
+For at gøre mit layout responsivt benytter jeg media-queries til at ændre aspect ratio og positionen af billedet, når skærmen er større end 1280px. <br>
+
+Jeg valgte at gøre billedet transparant ved større skærmstørrelser, sådan at teksten er lettere at læse, når den er ovenpå billedet.
+</p>
+        <div class="hero">
+                <img src="https://images.unsplash.com/photo-1588082255003-1a93643ecf59?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2759&q=80" alt="">
+                        <div class="hero-content">
+                            <h1>Discover Your Dream Couch</h1>
+                            <p>Unveil a world of comfort and style with our curated collection of luxury couches. Each piece is meticulously crafted to redefine your living space, combining aesthetics and functionality. Immerse yourself in the ultimate relaxation experience as you explore the endless possibilities in sofa design. Whether you seek classic elegance, modern sophistication, or timeless comfort, we have the perfect couch waiting for you.</p>
+                            <a href="#">Explore Collection <span class="material-symbols-outlined">
+                            arrow_forward</span></a>
+                        </div>
+        </div>
+    </div>
 </Layout>
+<style>
+html {
+    background-color: var(--primary);
+}
+
+
+.container > h1, p {
+    margin-inline: 1rem;
+    margin-bottom: 2rem;
+}
+    a {
+        text-decoration: none;
+        padding: 1rem 2rem;
+        background-color: var(--accent);
+        width: max-content;
+        color: var(--primary);
+        border-radius: var(--border-radius-round);
+        display: flex;
+        place-items: center;
+        gap: 1rem;
+        font-size: var(--fs-h4);
+        transition: 150ms ease-in-out;
+    }
+
+    span {
+    transition: 150ms all ease-in-out;
+    }
+    a:hover {
+        box-shadow: 0 0 0 1px var(--accent);
+        background-color: transparent;
+        color: var(--text);
+        transition: 150ms all ease-in-out;
+
+        & span {
+            transform: translateX(3px);
+            transition: 150ms all ease-in-out;
+        }
+    }
+
+
+    .hero > :not(:first-child) {
+        margin-inline: 1rem;
+        margin-top: 2rem;
+    }
+
+    .hero-content > * {
+        margin-top: 1rem;
+    }
+
+    img {
+        aspect-ratio: 16/9;
+        object-fit: cover;
+    }
+
+
+@media (width > 768px) {
+    img{
+        aspect-ratio: initial;
+        min-height: 100dvh;
+}
+
+.hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    /* place-items: center; */
+    align-items: center;
+}
+
+img {
+    grid-column: 1 / span 2;
+    grid-row: 1;
+    z-index: -2;
+    opacity: .5;
+}
+
+.hero-content {
+    grid-column: 2 / span 2;
+    grid-row: 1;
+}
+
+
+@media (width > 1280px) {
+    img {
+        grid-column: 1 span 2;
+        aspect-ratio: 2 / 1;
+        min-height: 100dvh;
+    }
+
+    
+    .hero-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-column: 2 / span 2;
+    }
+
+    a, p  {
+        grid-column: 2 / span 2;
+    }
+}
+
+}
+
+
+
+</style>

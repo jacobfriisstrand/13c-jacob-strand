@@ -1,0 +1,107 @@
+---
+const {name} = Astro.props;
+const {image} = Astro.props;
+---
+
+<div class="user-card">
+    <div class="user-card__content">
+        <div class="user-card__thumb">
+            <img src=`${image}` alt="">
+            <div class="user-card__info">
+                <p>Report for</p>
+                <h1>{name}</h1>
+        </div>
+        </div>
+        <div class="inputs">
+            <div class="input">
+                <input type="radio" name="daily" id="daily">
+                <label for="daily">Daily</label>
+            </div>
+            <div class="input">
+                <input type="radio" name="weekly" id="weekly" checked="true">
+                <label for="weekly">Weekly</label>
+            </div>
+            <div class="input">
+                <input type="radio" name="monthly" id="monthly">
+                <label for="monthly">Monthly</label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .user-card {
+        background-color: var(--primary);
+        border-radius: var(--border-radius-outer);
+        box-shadow: var(--box-shadow);
+        height: 100%;
+    }
+
+    .user-card__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100%;
+    }
+
+    .user-card-info p {
+        color: var(--subtle-text);
+    }
+
+    .user-card__content > *:not(:last-child) {
+        padding: 1rem;
+    }
+
+    .user-card > *:not(:last-child){
+        margin-bottom: 1rem;
+    }
+
+    .user-card__thumb {
+        display: flex;
+        place-items: center;
+        gap: 1rem;
+    }
+
+    h1 {
+        font-family: "headings";
+        font-size: var(--fs-h3);
+    }
+
+    img {
+        border-radius: var(--border-radius-round);
+        aspect-ratio: 1;
+        max-height: 5rem;
+        object-fit: cover;
+    }
+
+    label {
+        font-family: "body";
+    }
+
+    .input {
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+    }
+
+    .inputs {
+        display: flex;
+        justify-content: space-between;
+        background-color: var(--secondary);
+        padding: 1rem;
+        border-radius:0 0 var(--border-radius-outer) var(--border-radius-outer);
+    }
+
+
+    @media (width > 1600px){
+    .user-card__thumb {
+        flex-direction: column;
+        place-items: start;
+    }
+
+    .user-card__thumb h1 {
+        font-size: 3rem;
+    }
+
+    }
+</style>

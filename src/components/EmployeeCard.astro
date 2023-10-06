@@ -1,0 +1,74 @@
+---
+const { image } = Astro.props;
+const { name } = Astro.props;
+const { title } = Astro.props;
+const { text1 } = Astro.props;
+const { text2 } = Astro.props;
+const { class: className } = Astro.props;
+---
+
+<div class={className} id="card">
+    <div class="card__thumb">
+        <img src={image} alt="">
+        <div class="card__thumb__info">
+            <h2>{name}</h2>
+            <h3>{title}</h3>
+        </div>
+    </div>
+    <div class="card__text">
+        <p>{text1}</p>
+        <p>{text2}</p>
+    </div>
+</div>
+
+<style>
+
+    #card {
+        background-color: var(--primary);
+        padding: 1rem;
+        border-radius: var(--border-radius-outer);
+        box-shadow: var(--box-shadow);
+        height: 100%;
+    }
+
+    #card > *:not(:last-child) {
+        margin-bottom: 1rem;
+    }
+
+    .card__text > :first-child {
+        margin-bottom: 1rem;
+        font-size: var(--fs-h4);
+    }
+
+    .card__thumb__info h2 {
+        font-size: var(--fs-h4);
+    }
+    
+    .card__thumb__info h3, .card__text > :last-child {
+        font-size: var(--fs-body);
+        color: var(--subtle-text);
+        font-family: "body";
+    }
+
+    img {
+        width: 75px;
+        aspect-ratio: 1;
+        object-fit: cover;
+        clip-path: circle(50% at center);
+    }
+
+    .card__thumb {
+        display: flex;
+        flex-flow: wrap;
+        gap: 1rem;
+        place-items: center;
+    }
+
+        @media (width > 1500px) {
+  .card__text > :first-child {
+        font-size: var(--fs-h3);
+    }
+    }
+
+    
+</style>

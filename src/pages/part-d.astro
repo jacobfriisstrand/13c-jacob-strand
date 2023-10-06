@@ -2,8 +2,70 @@
 import Layout from '../layouts/Layout.astro';
 import "../../public/styles/style.css"
 import "../../public/styles/reset.css"
-import Navigation from '../components/Navigation.astro';
+import EmployeeCard from '../components/EmployeeCard.astro';
 ---
 
 <Layout title="13c | Part D">
+<main>
+    <h1>Part D</h1>
+    <p>Jeg lavede en container med klassen 'grid-container', som jeg puttede display: grid på. Grid-template-columns blev sat op sådan at de tilpasser sig skærmbredden, med en minimumsbredde på 300px og en maksimal bredde på 1 fr. <br>
+
+Efterfølgende tilføjede jeg en media query, der kun aktiveres, når skærmbredden var over 1500px. <br>Media queryen sørger for, at elementer med klassen 'grid-col-span-2' spændte over to kolonner, elementer med klassen 'grid-row-span-2' spændte over to rækker og var i kolonne 4, og det tredje element i grid-containeren blev placeret i række 2. <br>
+
+Da jeg har brugt Astro, og har lavet hvert card som en komponent, havde jeg svært ved at finde ud af, hvordan jeg kan give individuelle background-colors til hvert card, da jeg laver det som en komponent en gang, og importerer det samme komponent til min page. <br>
+</p>
+    <div class="grid-container">
+        <div class="child grid-col-span-2">
+            <EmployeeCard image="https://source.unsplash.com/random/50×50/?oldman" name="John Doe" title="Software Engineer" text1="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in mi vel justo convallis scelerisque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in mi vel justo convallis scelerisque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in mi vel justo convallis scelerisque." text2="Suspendisse potenti. Vivamus venenatis, massa in luctus faucibus, ligula elit interdum justo, ac suscipit sem urna vel libero."/>
+        </div>
+        <div class="child">
+            <EmployeeCard image="https://source.unsplash.com/random/50×50/?youngwoman" name="Alice Smith" title="Marketing Manager" text1="Praesent ut arcu ac eros iaculis convallis nec sit amet orci. Nullam elementum sollicitudin fermentum." text2="Duis tristique, augue eu rhoncus volutpat, metus nisi scelerisque urna, ac accumsan nulla libero nec justo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in mi vel justo convallis scelerisque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in mi vel justo convallis scelerisque."/>
+        </div>
+        <div class="child">
+            <EmployeeCard image="https://source.unsplash.com/random/50×50/?youngman" name="Michael Johnson" title="Sales Associate" text1="Vivamus sed tincidunt velit. Fusce euismod, lectus vel vulputate fringilla, libero neque ultrices justo." text2="Donec ut odio nec orci hendrerit condimentum eget vel ex. Nunc id lectus vitae dolor fermentum feugiat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in mi vel justo convallis scelerisque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in mi vel justo convallis scelerisque."/>
+        </div>
+        <div class="child grid-col-span-2">
+            <EmployeeCard image="https://source.unsplash.com/random/50×50/?asianwoman" name="Emily Brown" title="Graphic Designer" text1="Integer at elit sed urna bibendum vulputate nec in libero. Maecenas ac sapien nec tortor efficitur eleifend. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in mi vel justo convallis scelerisque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in mi vel justo convallis scelerisque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in mi vel justo convallis scelerisque." text2="Proin vel risus id metus blandit iaculis non a elit. Suspendisse consectetur feugiat quam."/>
+        </div>
+        <div class="child grid-row-span-2">
+            <EmployeeCard image="https://source.unsplash.com/random/50×50/?man" name="David Wilson" title="Product Manager" text1="Fusce at nisl et arcu commodo pellentesque eget nec ipsum. Sed feugiat nisi nec urna commodo tempus." text2="In hac habitasse platea dictumst. Nullam bibendum sed dolor non suscipit. Sed tincidunt augue a semper. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in mi vel justo convallis scelerisque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in mi vel justo convallis scelerisque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in mi vel justo convallis scelerisque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in mi vel justo convallis scelerisque."/>
+        </div>
+    </div>
+</main>
+
 </Layout>
+
+
+<style>
+    main {
+margin-inline: 1rem;
+    }
+
+    .grid-container {
+        display: grid;
+        gap: 2rem;
+        grid-template-columns:
+        repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+
+    @media (width > 1500px) {
+    .grid-col-span-2 {
+        grid-column: span 2;
+    }
+
+     .grid-row-span-2 {
+        grid-row: 1 / span 2;
+        grid-column: 4;
+    }
+
+    .grid-container > :nth-child(3) {
+        grid-row: 2;
+    }
+
+    }
+
+    h1 + p {
+        margin-block: 2rem;
+    }
+</style>

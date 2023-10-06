@@ -19,6 +19,7 @@
 @media (prefers-color-scheme: light) {
   :root {
     --text: hsl(58, 70%, 9%);
+    --subtle-text: hsl(0, 0%, 40%);
     --primary: hsl(60, 70%, 96%);
     --secondary: hsl(300, 69%, 95%);
     --accent: hsl(238, 71%, 46%);
@@ -55,6 +56,7 @@
 :root {
   --border-radius-outer: 10px;
   --border-radius-inner: calc(var(--border-radius-outer) / 2);
+  --border-radius-round: 1e5px;
 }
 
 /* Font sizing and styling */
