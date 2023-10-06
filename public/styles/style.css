@@ -1,17 +1,17 @@
 /* Font families */
 @font-face {
   font-family: "display";
-  src: url(fonts/fraunces-italic.woff2);
+  src: url(../fonts/fraunces-italic.woff2);
 }
 
 @font-face {
   font-family: "headings";
-  src: url(fonts/Calibre-medium.woff2);
+  src: url(../fonts/Calibre-medium.woff2);
 }
 
 @font-face {
   font-family: "body";
-  src: url(fonts/calibre-regular.woff2);
+  src: url(../fonts/calibre-regular.woff2);
 }
 
 /* Colors */
